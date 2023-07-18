@@ -1,0 +1,133 @@
+import math
+import random
+def Putting ():
+    if (puttingDistance > 0 and puttingDistance < 8):
+        print("I would suggest using 'power1' sense you are not far away from the hole!")
+
+    if (puttingDistance > 7 and puttingDistance< 19):
+        print("For this putt I would use 'power2' for a nice mid range putt.")
+
+    if (puttingDistance > 18 and puttingDistance< 41):
+        print("This is a far putt I would use 'power3'!")
+
+def Caddie ():
+    if (hole_distance > 99 and hole_distance < 115):
+        print("I would recomend using the 'pitchingWedge' here for the perfect shot!")
+    
+    if (hole_distance > 114 and hole_distance < 130):
+        print("I would use the 'iron9' for this hole for the perfect distance and forgivness!")
+
+    if (hole_distance > 129 and hole_distance < 145):
+        print("For this hole I would use the 'iron8' at this distance this club will give you great accuracy!")
+
+    if (hole_distance > 144 and hole_distance < 161):
+        print("For this hole I would use the 'iron7' to make sure you hit it far enough!")
+
+
+print("Welcome to out par 3 Pitch and Putt Golf simulator!")
+readytoPlay = (input("Please type 'Start' When ready to play."))
+print("Good luck out there!")
+
+if readytoPlay == 'Start':
+    print("Great on to the first hole!")
+
+else:
+    print("We are on a tight schedual today. Please proced to hole one as soon as possible.")
+    readytoPlay = input("Please type 'Start' When ready to play.")
+
+print("In our golf bag we have gifted you 4 clubs. These clubs are the iron7, iron8, iron9, and the pitchingWedge.")
+counter = 0
+Score = 0
+#add while loop to loop to how many holes the player wants to player
+nextHole = 'Yes'
+while nextHole != 'No':
+#add club radom distances 
+    hole_distance = random.randint(100, 160)
+    iron7 = random.randint(145, 160)
+    iron8 = random.randint(130, 144)
+    iron9 = random.randint(115, 129)
+    pitchingWedge = random.randint(100, 114)
+    
+#counter will tell the while loop when it is equal to playableholes
+    
+    counter += 1
+    print(f"This is hole {counter}. Hole {counter} is a par 3 {hole_distance} yard hole.")
+    caddieHelp = input("Would you like to use the caddies help on this hole? 'Yes/No'")
+
+    if caddieHelp != 'No':
+        Caddie()
+    
+
+    clubSelection = input("What club would you like to use for this hole?")
+    print(f"You chose the {clubSelection}! Great choice!")
+
+    firstShot = input("Please type 'Hit' when ready to hit the ball.")
+    if firstShot == 'Hit':
+        Score += 1
+
+
+
+    if clubSelection == "iron9":
+        print(f"Nice shot! you hit the ball {iron9} yards! ")
+        clubSelection = iron9
+
+    if clubSelection == "iron7":
+        print(f"Nice shot! you hit the ball {iron7} yards! ")
+        clubSelection = iron7
+
+    if clubSelection == "iron8":
+        print(f"Nice shot! you hit the ball {iron8} yards!")
+        clubSelection = iron8
+
+    if clubSelection == "pitchingWedge":
+        print(f"Nice shot! you hit the ball {pitchingWedge} yards!")
+        clubSelection = pitchingWedge
+
+    covertDistance = hole_distance - clubSelection
+    puttingDistance = abs(covertDistance)
+    print(f"You now have {puttingDistance} yards to the hole!")
+    Score += 1
+    caddieHelp = input("Would you like to use the caddies help on this hole? 'Yes/No'")
+
+    if caddieHelp != 'No':
+        Putting()
+        putting = input("Here is your putter good luck! Please type 'power1', 'power2', or 'power3'for how hard you want to hit it!.")
+    else:
+        putting = input("Here is your putter good luck! Please type 'power1', 'power2', or 'power3'for how hard you want to hit it!.")
+#distance of putting shots
+    power1 = random.randint(1, 7)
+    power2 = random.randint(8,17)
+    power3 = random.randint(18, 40)
+    if putting == 'power1':
+        
+        if (puttingDistance > 0 and puttingDistance < 8):
+            print("Right in the hole! Great shot!")
+        else: 
+            print("Just short!")
+            puttAttempt = input("Please type 'Tap' to hit the ball in the hole and move on to the next hole!")
+            if puttAttempt == 'Tap':
+                print("Great hole!")
+            Score += 1
+    if putting == 'power2':
+        
+        if (puttingDistance > 7 and puttingDistance< 19):
+            print("Right in the hole! Nice shot!")
+        else: 
+            print("Are you kidding me! Just lipped out!")
+            puttAttempt = input("Please type 'Tap' to hit the ball in the hole and move on to the next hole!")
+            if puttAttempt == 'Tap':
+             print("Nice putt!")
+             Score += 1
+    if putting == 'power3':
+        
+        if (puttingDistance > 18 and puttingDistance< 41):
+         print("Right in the hole! Amazing shot!")
+        else:
+            print("Just passed the hole!")
+            puttAttempt = input("Please type 'Tap' to hit the ball in the hole and move on to the next hole!")
+            if puttAttempt == 'Tap':
+             print("Nice Shot! You look just like Tigar out there!")
+             Score += 1
+    nextHole = input("Would you like to keep playing? (Yes'/'No')")
+    if nextHole != 'Yes':
+        print(f"Great job! You played {counter} holes and shot a score of {Score}! Please come back again to perfect your golf game!")
